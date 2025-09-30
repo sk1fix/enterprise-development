@@ -28,7 +28,7 @@ public class Model
     /// <summary>
     /// Type of bicycle brakes
     /// </summary>
-    public required string BrakeType { get; set; } 
+    public required BrakeType BrakeType { get; set; } 
 
     /// <summary>
     /// Model year
