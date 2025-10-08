@@ -23,7 +23,7 @@ public class Renter
     /// <summary>
     /// Patronymic of the renter
     /// </summary>
-    public required string MiddleName { get; set; }
+    public string? MiddleName { get; set; }
 
     /// <summary>
     /// Contact phone number 

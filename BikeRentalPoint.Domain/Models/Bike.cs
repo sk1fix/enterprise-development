@@ -13,12 +13,12 @@ public class Bike
     /// <summary>
     /// Bike serial number
     /// </summary>
-    public required int SerialNumber { get; set; }
+    public required string SerialNumber { get; set; }
 
     /// <summary>
     /// Bike color
     /// </summary>
-    public required string Color { get; set; }
+    public string? Color { get; set; }
 
     /// <summary>
     /// Model associated with this bike

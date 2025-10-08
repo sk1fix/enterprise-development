@@ -6,25 +6,15 @@ namespace BikeRentalPoint.Tests;
 /// <summary>
 /// Unit tests
 /// </summary>
-public class BikeRentalTests
+public class Tests : IClassFixture<DataSeed>
 {
-    /// <summary>
-    /// Test data initialization
-    /// </summary>
-    private readonly List<Model> _models;
-    private readonly List<Renter> _renters;
-    private readonly List<Bike> _bikes;
-    private readonly List<Rent> _rents;
-
+    private readonly DataSeed _fixture;
     /// <summary>
     /// Initializes test data before each test
     /// </summary>
-    public BikeRentalTests()
+    public Tests(DataSeed fixture)
     {
-        _models = DataSeed.GetModels();
-        _renters = DataSeed.GetRenters();
-        _bikes = DataSeed.GetBikes(_models);
-        _rents = DataSeed.GetRents(_bikes, _renters);
+        _fixture = fixture;
     }
 
     /// <summary>
@@ -33,12 +23,13 @@ public class BikeRentalTests
     [Fact]
     public void GetAllSportsBikes()
     {
-        var query = _models
-            .Where(m => m.BikeType == BikeType.Mountain)
-            .ToList();
+        var models = _fixture.Models
+                    .Where(m => m.BikeType == BikeType.Mountain)
+                    .ToList();
 
-        Assert.NotEmpty(query);
-        Assert.Equal(3, query.Count());
+        Assert.NotEmpty(models);
+        Assert.Equal(3, models.Count);
+        Assert.All(models, m => Assert.Equal(BikeType.Mountain, m.BikeType));
     }
 
     /// <summary>
@@ -47,12 +38,12 @@ public class BikeRentalTests
     [Fact]
     public void GetTop5ModelsByProfit()
     {
-        var query = _rents
+        var query = _fixture.Rents
             .GroupBy(r => r.Bike.Model)
             .Select(g => new
             {
                 Model = g.Key,
-                Profit = g.Sum(r => r.Duration * r.Bike.Model.PricePerHour)
+                Profit = g.Sum(r => (decimal)r.Duration.TotalHours * r.Bike.Model.PricePerHour)
             })
             .OrderByDescending(x => x.Profit)
             .Take(5)
@@ -60,6 +51,8 @@ public class BikeRentalTests
 
         Assert.NotEmpty(query);
         Assert.Equal(5, query.Count);
+        Assert.All(query, x => Assert.True(x.Profit > 0));
+        Assert.Contains(query, m => m.Profit == 136.5m);
     }
 
     /// <summary>
@@ -68,19 +61,19 @@ public class BikeRentalTests
     [Fact]
     public void GetTop5ModelsByDuration()
     {
-        var query = _rents
+        var query = _fixture.Rents
             .GroupBy(r => r.Bike.Model)
             .Select(g => new
             {
                 Model = g.Key,
-                TotalDuration = g.Sum(r => r.Duration)
+                TotalDuration = g.Sum(r => r.Duration.TotalHours)
             })
             .OrderByDescending(x => x.TotalDuration)
             .Take(5)
             .ToList();
 
         Assert.NotEmpty(query);
-        Assert.Equal(5, query.Count);
+        Assert.Contains(query, m => m.TotalDuration == 10.5);
     }
 
     /// <summary>
@@ -89,13 +82,14 @@ public class BikeRentalTests
     [Fact]
     public void GetMinMaxAvgRentDuration()
     {
-        var min = _rents.Min(r => r.Duration);
-        var max = _rents.Max(r => r.Duration);
-        var avg = _rents.Average(r => r.Duration);
+        var durations = _fixture.Rents.Select(r => r.Duration.TotalHours).ToList();
+        var min = durations.Min();
+        var max = durations.Max();
+        var avg = durations.Average();
 
-        Assert.True(max >= min);
-        Assert.True(avg >= min);
-        Assert.True(avg <= max);
+        Assert.Equal(1.5, min);
+        Assert.Equal(6, max);
+        Assert.Equal(3.17, Math.Round(avg, 2));
     }
 
     /// <summary>
@@ -104,16 +98,14 @@ public class BikeRentalTests
     [Fact]
     public void GetTotalRentDurationByType()
     {
-        var query = _rents
+        var grouped = _fixture.Rents
             .GroupBy(r => r.Bike.Model.BikeType)
-            .Select(g => new
-            {
-                Type = g.Key,
-                TotalDuration = g.Sum(r => r.Duration)
-            })
+            .Select(g => new { Type = g.Key, Total = g.Sum(r => r.Duration.TotalHours) })
             .ToList();
 
-        Assert.NotEmpty(query);
+        Assert.NotEmpty(grouped);
+        Assert.All(grouped, g => Assert.True(g.Total > 0));
+        Assert.Contains(grouped, m => m.Total == 10.5);
     }
 
     /// <summary>
@@ -122,19 +114,13 @@ public class BikeRentalTests
     [Fact]
     public void GetTopRentersByRentCount()
     {
-        var query = _rents
+        var result = _fixture.Rents
             .GroupBy(r => r.Renter)
-            .Select(g => new
-            {
-                Renter = g.Key,
-                Count = g.Count()
-            })
+            .Select(g => new { Renter = g.Key, Count = g.Count() })
             .OrderByDescending(x => x.Count)
-            .Take(3)
+            .Take(10)
             .ToList();
 
-        Assert.True(query.Count > 0);
-        var topRenter = query.First().Renter;
-        Assert.Equal(_renters[0].Id, topRenter.Id);
+        Assert.Contains(result, x => x.Renter.Id == _fixture.Renters[0].Id);
     }
 }

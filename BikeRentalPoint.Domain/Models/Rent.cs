@@ -18,7 +18,7 @@ public class Rent
     /// <summary>
     /// Duration of the rental period in hours
     /// </summary>
-    public required decimal Duration { get; set; }
+    public required TimeSpan Duration { get; set; }
 
     /// <summary>
     /// Bike associated with this rent

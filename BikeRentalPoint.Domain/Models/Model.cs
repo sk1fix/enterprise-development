@@ -13,17 +13,17 @@ public class Model
     /// <summary>
     /// Bike wheel size
     /// </summary>
-    public required float WheelSize { get; set; }
+    public double? WheelSize { get; set; }
 
     /// <summary>
     /// Maximum permissible passenger weight
     /// </summary>
-    public required int MaxPassengerWeight { get; set; }
+    public double? MaxPassengerWeight { get; set; }
 
     /// <summary>
     /// Bike weight
     /// </summary>
-    public required float BikeWeight { get; set; }
+    public double? BikeWeight { get; set; }
 
     /// <summary>
     /// Type of bicycle brakes
@@ -33,7 +33,7 @@ public class Model
     /// <summary>
     /// Model year
     /// </summary>
-    public required int ModelYear { get; set; }
+    public int? ModelYear { get; set; }
 
     /// <summary>
     /// Price of an hour of rent
