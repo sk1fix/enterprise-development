@@ -6,22 +6,15 @@ namespace BikeRentalPoint.Tests;
 /// <summary>
 /// Unit tests
 /// </summary>
-public class Tests : IClassFixture<DataSeed>
+public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
 {
-    private readonly DataSeed _fixture;
-    /// <summary>
-    /// Initializes test data before each test
-    /// </summary>
-    public Tests(DataSeed fixture)
-    {
-        _fixture = fixture;
-    }
-
+    private readonly DataSeed _fixture = fixture;
+    
     /// <summary>
     /// Tests retrieval of all mountain bikes 
     /// </summary>
     [Fact]
-    public void GetAllSportsBikes()
+    public void GetAllMountainsBikes()
     {
         var models = _fixture.Models
                     .Where(m => m.BikeType == BikeType.Mountain)
@@ -87,9 +80,9 @@ public class Tests : IClassFixture<DataSeed>
         var max = durations.Max();
         var avg = durations.Average();
 
-        Assert.Equal(1.5, min);
-        Assert.Equal(6, max);
-        Assert.Equal(3.17, Math.Round(avg, 2));
+        Assert.Equal(1.5, min, 2);
+        Assert.Equal(6, max, 2);
+        Assert.Equal(3.17, Math.Round(avg, 2), 2);
     }
 
     /// <summary>
