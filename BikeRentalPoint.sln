@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Tests", "Bi
 		{35C2563A-F562-409C-9621-FC30EF384225} = {35C2563A-F562-409C-9621-FC30EF384225}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Application", "Application\BikeRentalPoint.Application.csproj", "{542B1DC2-2290-4133-AD01-3361AD4E1871}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,10 @@ Global
 		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
