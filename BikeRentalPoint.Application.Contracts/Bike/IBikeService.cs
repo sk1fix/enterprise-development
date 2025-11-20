@@ -1,5 +1,4 @@
-﻿using BikeRentalPoint.Application.DTO;
-namespace BikeRentalPoint.Application.Interfaces;
+﻿namespace BikeRentalPoint.Application.Contracts.Bike;
 
 public interface IBikeService
 {

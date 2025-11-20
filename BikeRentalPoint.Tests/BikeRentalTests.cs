@@ -1,5 +1,5 @@
-using BikeRentalPoint.Domain.Models;
 using BikeRentalPoint.Domain.Fixture;
+using BikeRentalPoint.Domain.Models;
 
 namespace BikeRentalPoint.Tests;
 
@@ -9,7 +9,7 @@ namespace BikeRentalPoint.Tests;
 public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
 {
     private readonly DataSeed _fixture = fixture;
-    
+
     /// <summary>
     /// Tests retrieval of all mountain bikes 
     /// </summary>
