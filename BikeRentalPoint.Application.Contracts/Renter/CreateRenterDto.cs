@@ -1,10 +1,11 @@
 ﻿namespace BikeRentalPoint.Application.Contracts.Renter;
 
 /// <summary>
-/// 
+/// DTO for POST/PUT requests to renters
 /// </summary>
-/// <param name="LastName"></param>
-/// <param name="Name"></param>
-/// <param name="MiddleName"></param>
-/// <param name="PhoneNumber"></param>
+/// <param name="LastName">Renter`s last name</param>
+/// <param name="Name">Renter`s name</param>
+/// <param name="MiddleName">Renter`s middle name</param>
+/// <param name="PhoneNumber">Renter`s phone numberparam>
+///
 public sealed record CreateRenterDto(string LastName, string Name, string? MiddleName, string PhoneNumber);
