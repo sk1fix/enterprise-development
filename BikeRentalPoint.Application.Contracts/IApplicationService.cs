@@ -15,14 +15,14 @@ public interface IApplicationService<TDto, TCreateUpdateDto, TKey>
     /// Getting the entire list of DTOs
     /// </summary>
     /// <returns></returns>
-    public Task<IEnumerable<TDto>> GetAll();
+    public Task<IList<TDto>> GetAll();
 
     /// <summary>
     /// Getting a DTO by ID
     /// </summary>
     /// <param name="id">DTO ID</param>
     /// <returns></returns>
-    public Task<TDto?> Get(TKey id);
+    public Task<TDto> Get(TKey id);
 
     /// <summary>
     /// Creating a DTO

@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<ProjectReference Include="..\BikeRentalPoint.Domain\BikeRentalPoint.Domain.csproj" />
+	<ProjectReference Include="..\BikeRentalPoint.Application.Contracts\BikeRentalPoint.Application.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

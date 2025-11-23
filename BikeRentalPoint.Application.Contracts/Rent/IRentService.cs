@@ -1,4 +1,7 @@
-﻿namespace BikeRentalPoint.Application.Contracts.Rent;
+﻿using BikeRentalPoint.Application.Contracts.Bike;
+using BikeRentalPoint.Application.Contracts.Renter;
+
+namespace BikeRentalPoint.Application.Contracts.Rent;
 
 /// <summary>
 /// Interface for rental service operations
@@ -6,37 +9,16 @@
 public interface IRentService : IApplicationService<RentDto, CreateRentDto, Guid>
 {
     /// <summary>
-    /// Get all rental records
-    /// </summary>
-    /// <returns>Collection of all rental records</returns>
-    public Task<IEnumerable<RentDto>> GetAllRentsAsync();
-
-    /// <summary>
-    /// Get a rental record by unique identifier
+    /// Get the bicycle information for a specific rental
     /// </summary>
     /// <param name="id">Unique identifier of the rental</param>
-    /// <returns>Rental details or null if not found</returns>
-    public Task<RentDto?> GetRentByIdAsync(Guid id);
+    /// <returns>Bicycle details associated with the rental</returns>
+    public Task<BikeDto> GetRentBike(Guid id);
 
     /// <summary>
-    /// Create a new rental record
+    /// Get the renter information for a specific rental
     /// </summary>
-    /// <param name="createRentDto">Rental creation data</param>
-    /// <returns>Created rental details</returns>
-    public Task<RentDto> CreateRentAsync(CreateRentDto createRentDto);
-
-    /// <summary>
-    /// Update an existing rental record
-    /// </summary>
-    /// <param name="id">Unique identifier of the rental to update</param>
-    /// <param name="updateRentDto">Updated rental data</param>
-    /// <returns>Updated rental details or null if not found</returns>
-    public Task<RentDto?> UpdateRentAsync(Guid id, CreateRentDto updateRentDto);
-
-    /// <summary>
-    /// Delete a rental record by unique identifier
-    /// </summary>
-    /// <param name="id">Unique identifier of the rental to delete</param>
-    /// <returns>True if deletion was successful, false if rental not found</returns>
-    public Task<bool> DeleteRentAsync(Guid id);
+    /// <param name="id">Unique identifier of the rental</param>
+    /// <returns>Renter details associated with the rental</returns>
+    public Task<RenterDto> GetRentRenter(Guid id);
 }
