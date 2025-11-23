@@ -1,8 +1,7 @@
 ﻿using BikeRentalPoint.Application.Contracts.Bike;
 using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Renter;
-using BikeRentalPoint.Domain.Models;
-
+using BikeRentalPoint.Shared.Enums;
 
 namespace BikeRentalPoint.Application.Contracts;
 /// <summary>

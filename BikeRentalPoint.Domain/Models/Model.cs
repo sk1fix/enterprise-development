@@ -1,4 +1,6 @@
-﻿namespace BikeRentalPoint.Domain.Models;
+﻿using BikeRentalPoint.Shared.Enums;
+
+namespace BikeRentalPoint.Domain.Models;
 
 /// <summary>
 /// Information about the bike model

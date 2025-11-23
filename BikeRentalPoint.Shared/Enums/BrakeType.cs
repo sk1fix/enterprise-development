@@ -1,4 +1,4 @@
-﻿namespace BikeRentalPoint.Domain.Models;
+﻿namespace BikeRentalPoint.Shared.Enums;
 
 /// <summary>
 /// Bicycle brake system types

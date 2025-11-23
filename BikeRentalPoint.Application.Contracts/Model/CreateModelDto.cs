@@ -1,4 +1,4 @@
-﻿using BikeRentalPoint.Domain.Models;
+﻿using BikeRentalPoint.Shared.Enums;
 
 namespace BikeRentalPoint.Application.Contracts.Model;
 

@@ -5,7 +5,11 @@ using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Renter;
 using BikeRentalPoint.Domain;
 using BikeRentalPoint.Domain.Models;
+using BikeRentalPoint.Shared.Enums;
 
+/// <summary>
+/// Interface for performing analytical queries
+/// </summary>
 public class AnalyticsService(
     IRepository<Rent, Guid> rentRepository,
     IRepository<Bike, Guid> bikeRepository,
