@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.AppHost", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.ServiceDefaults", "BikeRentalPoint.ServiceDefaults\BikeRentalPoint.ServiceDefaults.csproj", "{B39E2C29-D024-4E91-2BAD-390A527B8218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Infrastructure.EfCore", "BikeRentalPoint.Infrastructure.EfCore\BikeRentalPoint.Infrastructure.EfCore.csproj", "{4B9A771C-AA6D-49C7-BDEA-714353E9606A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

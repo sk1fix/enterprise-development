@@ -1,5 +1,4 @@
 using BikeRentalPoint.Domain.Fixture;
-using BikeRentalPoint.Domain.Models;
 
 namespace BikeRentalPoint.Tests;
 

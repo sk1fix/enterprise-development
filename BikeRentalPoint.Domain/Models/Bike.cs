@@ -25,7 +25,7 @@ public class Bike
     /// </summary>
     [Column("color")]
     public string? Color { get; set; }
-    
+
     /// <summary>
     /// Foreign key referencing the bicycle model
     /// </summary>
