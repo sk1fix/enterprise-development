@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BikeRentalPoint.Domain\BikeRentalPoint.Domain.csproj" />
+    <ProjectReference Include="..\BikeRentalPoint.Shared\BikeRentalPoint.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -143,8 +143,10 @@ public class AnalyticsService(
         var models = await modelRepository.GetAll();
 
         var grouped = rents
-            .GroupBy(r => models.First(m => m.Id == bikes.First(b => b.Id == r.BikeId).ModelId).BikeType)
-            .Select(g => (Type: g.Key, TotalHours: g.Sum(r => r.Duration.TotalHours)))
+            .Join(bikes, rent => rent.BikeId, bike => bike.Id, (rent, bike) => new { rent, bike })
+            .Join(models, rb => rb.bike.ModelId, model => model.Id, (rb, model) => new { rb.rent, model })
+            .GroupBy(x => x.model.BikeType)
+            .Select(g => (type: g.Key, totalHours: g.Sum(x => x.rent.Duration.TotalHours)))
             .ToList();
 
         return grouped;

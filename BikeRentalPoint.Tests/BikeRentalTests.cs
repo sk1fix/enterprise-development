@@ -1,4 +1,6 @@
 using BikeRentalPoint.Domain.Fixture;
+using BikeRentalPoint.Shared.Enums;
+
 
 namespace BikeRentalPoint.Tests;
 
@@ -31,11 +33,19 @@ public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
     public void GetTop5ModelsByProfit()
     {
         var query = _fixture.Rents
-            .GroupBy(r => r.Bike.Model)
+            .Join(_fixture.Bikes,
+                rent => rent.BikeId,
+                bike => bike.Id,
+                (rent, bike) => new { rent, bike })
+            .Join(_fixture.Models,
+                rb => rb.bike.ModelId,
+                model => model.Id,
+                (rb, model) => new { rb.rent, model })
+            .GroupBy(x => x.model)
             .Select(g => new
             {
                 Model = g.Key,
-                Profit = g.Sum(r => (decimal)r.Duration.TotalHours * r.Bike.Model.PricePerHour)
+                Profit = g.Sum(x => (decimal)x.rent.Duration.TotalHours * x.model.PricePerHour)
             })
             .OrderByDescending(x => x.Profit)
             .Take(5)
@@ -54,11 +64,19 @@ public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
     public void GetTop5ModelsByDuration()
     {
         var query = _fixture.Rents
-            .GroupBy(r => r.Bike.Model)
+            .Join(_fixture.Bikes,
+                rent => rent.BikeId,
+                bike => bike.Id,
+                (rent, bike) => new { rent, bike })
+            .Join(_fixture.Models,
+                rb => rb.bike.ModelId,
+                model => model.Id,
+                (rb, model) => new { rb.rent, model })
+            .GroupBy(x => x.model)
             .Select(g => new
             {
                 Model = g.Key,
-                TotalDuration = g.Sum(r => r.Duration.TotalHours)
+                TotalDuration = g.Sum(x => x.rent.Duration.TotalHours)
             })
             .OrderByDescending(x => x.TotalDuration)
             .Take(5)
@@ -91,8 +109,16 @@ public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
     public void GetTotalRentDurationByType()
     {
         var grouped = _fixture.Rents
-            .GroupBy(r => r.Bike.Model.BikeType)
-            .Select(g => new { Type = g.Key, Total = g.Sum(r => r.Duration.TotalHours) })
+            .Join(_fixture.Bikes,
+                rent => rent.BikeId,
+                bike => bike.Id,
+                (rent, bike) => new { rent, bike })
+            .Join(_fixture.Models,
+                rb => rb.bike.ModelId,
+                model => model.Id,
+                (rb, model) => new { rb.rent, model })
+            .GroupBy(x => x.model.BikeType)
+            .Select(g => new { Type = g.Key, Total = g.Sum(x => x.rent.Duration.TotalHours) })
             .ToList();
 
         Assert.NotEmpty(grouped);
@@ -107,7 +133,11 @@ public class BikeRentalTests(DataSeed fixture) : IClassFixture<DataSeed>
     public void GetTopRentersByRentCount()
     {
         var result = _fixture.Rents
-            .GroupBy(r => r.Renter)
+            .Join(_fixture.Renters,
+                rent => rent.RenterId,
+                renter => renter.Id,
+                (rent, renter) => new { rent, renter })
+            .GroupBy(x => x.renter)
             .Select(g => new { Renter = g.Key, Count = g.Count() })
             .OrderByDescending(x => x.Count)
             .Take(10)

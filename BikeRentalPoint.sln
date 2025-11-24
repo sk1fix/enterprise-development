@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Tests", "Bi
 		{35C2563A-F562-409C-9621-FC30EF384225} = {35C2563A-F562-409C-9621-FC30EF384225}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Application", "Application\BikeRentalPoint.Application.csproj", "{542B1DC2-2290-4133-AD01-3361AD4E1871}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Application", "BikeRentalPoint.Application\BikeRentalPoint.Application.csproj", "{542B1DC2-2290-4133-AD01-3361AD4E1871}"
 	ProjectSection(ProjectDependencies) = postProject
 		{35C2563A-F562-409C-9621-FC30EF384225} = {35C2563A-F562-409C-9621-FC30EF384225}
 	EndProjectSection
@@ -20,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Shared", "BikeRentalPoint.Shared\BikeRentalPoint.Shared.csproj", "{A9B61947-2C86-425F-B858-7E023E6BD94C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Api.Host", "BikeRentalPoint.Api.Host\BikeRentalPoint.Api.Host.csproj", "{147C6ED8-46BB-69BB-347C-CDAE59109C38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A} = {4B9A771C-AA6D-49C7-BDEA-714353E9606A}
+		{542B1DC2-2290-4133-AD01-3361AD4E1871} = {542B1DC2-2290-4133-AD01-3361AD4E1871}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.AppHost", "BikeRentalPoint.AppHost\BikeRentalPoint.AppHost.csproj", "{E6A16BB4-F002-4DD6-B086-5D929D00599C}"
 EndProject
