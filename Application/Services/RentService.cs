@@ -69,7 +69,7 @@ public class RentService(IRepository<Rent, Guid> repository, IMapper mapper) : I
     /// </summary>
     /// <param name="rentId">Unique identifier of the rental to delete</param>
     /// <returns>True if deletion was successful, false otherwise</returns>
-    public async Task<bool> Delete(Guid bikeId) => await repository.Delete(bikeId);
+    public async Task<bool> Delete(Guid rentId) => await repository.Delete(rentId);
 
     /// <summary>
     /// Get the bicycle information for a specific rental
