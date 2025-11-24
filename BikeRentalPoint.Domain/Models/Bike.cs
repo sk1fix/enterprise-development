@@ -25,9 +25,15 @@ public class Bike
     /// </summary>
     [Column("color")]
     public string? Color { get; set; }
+    
+    /// <summary>
+    /// Foreign key referencing the bicycle model
+    /// </summary>
+    [Column("model_id")]
+    public required Guid ModelId { get; set; }
 
     /// <summary>
-    /// Model associated with this bike
+    /// Bicycle model associated with this bike
     /// </summary>
-    public required Model Model { get; set; }
+    public virtual Model? Model { get; set; }
 }
