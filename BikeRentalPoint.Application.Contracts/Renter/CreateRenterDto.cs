@@ -6,6 +6,5 @@
 /// <param name="LastName">Renter`s last name</param>
 /// <param name="Name">Renter`s name</param>
 /// <param name="MiddleName">Renter`s middle name</param>
-/// <param name="PhoneNumber">Renter`s phone numberparam>
-///
+/// <param name="PhoneNumber">Renter`s phone number</param>
 public sealed record CreateRenterDto(string LastName, string Name, string? MiddleName, string PhoneNumber);
