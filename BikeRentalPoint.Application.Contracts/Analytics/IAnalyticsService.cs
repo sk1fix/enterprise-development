@@ -1,9 +1,8 @@
 ﻿using BikeRentalPoint.Application.Contracts.Bike;
 using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Renter;
-using BikeRentalPoint.Shared.Enums;
 
-namespace BikeRentalPoint.Application.Contracts;
+namespace BikeRentalPoint.Application.Contracts.Analytics;
 /// <summary>
 /// Interface for performing analytical queries
 /// </summary>
@@ -31,7 +30,7 @@ public interface IAnalyticsService
     /// Get statistics on the minimum, maximum, and average rental duration calculated
     /// </summary>
     /// <returns>statistics on the minimum, maximum, and average rental duration calculated</returns>
-    public Task<(double min, double max, double avg)> GetRentalStatisticsAsync();
+    public Task<RentalStatisticsDto> GetRentalStatisticsAsync();
 
     /// <summary>
     /// Get the best renters by the number of rentals
@@ -43,5 +42,5 @@ public interface IAnalyticsService
     /// Get total rental duration grouped by bike type
     /// </summary>
     /// <returns>Total duration by bike type</returns>
-    public Task<IList<(BikeType Type, double TotalHours)>> GetTotalRentDurationByTypeAsync();
+    public Task<IList<BikeTypeDurationDto>> GetTotalRentDurationByTypeAsync();
 }

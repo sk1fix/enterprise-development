@@ -1,5 +1,6 @@
 using BikeRentalPoint.Application;
 using BikeRentalPoint.Application.Contracts;
+using BikeRentalPoint.Application.Contracts.Analytics;
 using BikeRentalPoint.Application.Contracts.Bike;
 using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Rent;

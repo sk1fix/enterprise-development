@@ -1,8 +1,7 @@
-﻿using BikeRentalPoint.Application.Contracts;
+﻿using BikeRentalPoint.Application.Contracts.Analytics;
 using BikeRentalPoint.Application.Contracts.Bike;
 using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Renter;
-using BikeRentalPoint.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BikeRentalPoint.Api.Host.Controllers;
@@ -62,11 +61,10 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     [HttpGet("rental-statistics")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> GetRentalStatistics()
+    public async Task<RentalStatisticsDto> GetRentalStatistics()
     {
         logger.LogInformation("Called GetRentalStatistics in AnalyticsController");
-        var result = await service.GetRentalStatisticsAsync();
-        return Ok(new { result.min, result.max, result.avg });
+        return await service.GetRentalStatisticsAsync();
     }
 
     /// <summary>
@@ -89,17 +87,9 @@ public class AnalyticsController(IAnalyticsService service, ILogger<AnalyticsCon
     [HttpGet("duration-by-type")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<ActionResult> GetTotalRentDurationByType()
+    public async Task<IList<BikeTypeDurationDto>> GetTotalRentDurationByType()
     {
         logger.LogInformation("Called GetTotalRentDurationByType in AnalyticsController");
-        var result = await service.GetTotalRentDurationByTypeAsync();
-
-        var formattedResult = result.Select(x => new
-        {
-            type = x.Type,
-            totalHours = x.TotalHours
-        }).ToList();
-         
-        return Ok(new { durations = formattedResult });
+        return await service.GetTotalRentDurationByTypeAsync();
     }
 }

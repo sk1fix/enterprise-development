@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using BikeRentalPoint.Application.Contracts;
+using BikeRentalPoint.Application.Contracts.Analytics;
 using BikeRentalPoint.Application.Contracts.Bike;
 using BikeRentalPoint.Application.Contracts.Model;
 using BikeRentalPoint.Application.Contracts.Renter;
@@ -92,20 +92,20 @@ public class AnalyticsService(
     /// Get statistics on the minimum, maximum, and average rental duration calculated
     /// </summary>
     /// <returns>statistics on the minimum, maximum, and average rental duration calculated</returns>
-    public async Task<(double min, double max, double avg)> GetRentalStatisticsAsync()
+    public async Task<RentalStatisticsDto> GetRentalStatisticsAsync()
     {
         var rents = await rentRepository.GetAll();
 
         var durations = rents.Select(r => r.Duration.TotalHours).ToList();
 
         if (!durations.Any())
-            return (0, 0, 0);
+            return new RentalStatisticsDto(0, 0, 0);
 
         var min = durations.Min();
         var max = durations.Max();
         var avg = durations.Average();
 
-        return (min, max, avg);
+        return new RentalStatisticsDto(min, max, avg);
     }
 
     /// <summary>
@@ -136,7 +136,7 @@ public class AnalyticsService(
     /// Get total rental duration grouped by bike type
     /// </summary>
     /// <returns>Total duration by bike type</returns>
-    public async Task<IList<(BikeType Type, double TotalHours)>> GetTotalRentDurationByTypeAsync()
+    public async Task<IList<BikeTypeDurationDto>> GetTotalRentDurationByTypeAsync()
     {
         var rents = await rentRepository.GetAll();
         var bikes = await bikeRepository.GetAll();
@@ -146,7 +146,10 @@ public class AnalyticsService(
             .Join(bikes, rent => rent.BikeId, bike => bike.Id, (rent, bike) => new { rent, bike })
             .Join(models, rb => rb.bike.ModelId, model => model.Id, (rb, model) => new { rb.rent, model })
             .GroupBy(x => x.model.BikeType)
-            .Select(g => (type: g.Key, totalHours: g.Sum(x => x.rent.Duration.TotalHours)))
+            .Select(g => new BikeTypeDurationDto(
+                Type: g.Key,
+                TotalHours: g.Sum(x => x.rent.Duration.TotalHours)
+            ))
             .ToList();
 
         return grouped;
