@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Deserializers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Aspire.Confluent.Kafka" Version="9.5.2" />
   </ItemGroup>
 
