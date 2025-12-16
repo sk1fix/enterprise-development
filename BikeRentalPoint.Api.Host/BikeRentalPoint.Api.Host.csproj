@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BikeRentalPoint.Application\BikeRentalPoint.Application.csproj" />
+    <ProjectReference Include="..\BikeRentalPoint.Infrastructure.Kafka\BikeRentalPoint.Infrastructure.Kafka.csproj" />
     <ProjectReference Include="..\BikeRentalPoint.ServiceDefaults\BikeRentalPoint.ServiceDefaults.csproj" />
 	<ProjectReference Include="..\BikeRentalPoint.Domain\BikeRentalPoint.Domain.csproj" />
 	<ProjectReference Include="..\BikeRentalPoint.Application.Contracts\BikeRentalPoint.Application.Contracts.csproj" />

@@ -11,11 +11,14 @@ using BikeRentalPoint.Domain.Fixture;
 using BikeRentalPoint.Domain.Models;
 using BikeRentalPoint.Infrastructure.EfCore;
 using BikeRentalPoint.Infrastructure.EfCore.Repository;
+using BikeRentalPoint.Infrastructure.Kafka;
+using BikeRentalPoint.Infrastructure.Kafka.Deserializers;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -56,6 +59,20 @@ builder.Services.AddScoped<IApplicationService<ModelDto, CreateModelDto, Guid>, 
 builder.Services.AddScoped<IApplicationService<RenterDto, CreateRenterDto, Guid>, RenterService>();
 builder.Services.AddScoped<IRentService, RentService>();
 builder.Services.AddScoped<IAnalyticsService, AnalyticsService>();
+
+builder.Services.AddHostedService<BikeKafkaConsumer>();
+builder.AddKafkaConsumer<Guid, IList<CreateRentDto>>("bike-rental-point-kafka",
+    configureBuilder: builder =>
+    {
+        builder.SetKeyDeserializer(new BikeRentalPointKeyDeserializer());
+        builder.SetValueDeserializer(new BikeRentalPointValueDeserializer());
+    },
+    configureSettings: settings =>
+    {
+        settings.Config.GroupId = "bike-rental-point-consumer";
+        settings.Config.AutoOffsetReset = Confluent.Kafka.AutoOffsetReset.Earliest;
+    }
+ );
 
 var app = builder.Build();
 

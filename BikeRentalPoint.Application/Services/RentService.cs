@@ -11,9 +11,11 @@ namespace BikeRentalPoint.Application.Services;
 /// <summary>
 /// Service for managing rental operations
 /// </summary>
-/// <param name="repository">Repository for data access</param>
+/// <param name="repository">Repository for accessing and persisting <see cref="Rent"/> entities.</param>
+/// <param name="bikeRepository">Repository used to validate and access <see cref="Bike"/> entities referenced by rentals.</param>
+/// <param name="renterRepository">Repository used to validate and access <see cref="Renter"/> entities referenced by rentals.</param>
 /// <param name="mapper">AutoMapper instance for object mapping</param>
-public class RentService(IRepository<Rent, Guid> repository, IMapper mapper) : IRentService
+public class RentService(IRepository<Rent, Guid> repository, IRepository<Bike, Guid> bikeRepository, IRepository<Renter, Guid> renterRepository, IMapper mapper) : IRentService
 {
     /// <summary>
     /// Create a new rental record
@@ -22,6 +24,8 @@ public class RentService(IRepository<Rent, Guid> repository, IMapper mapper) : I
     /// <returns>Created rental details</returns>
     public async Task<RentDto> Create(CreateRentDto dto)
     {
+        _ = await bikeRepository.Get(dto.BikeId) ?? throw new KeyNotFoundException($"Bike with id {dto.BikeId} not found");
+        _ = await renterRepository.Get(dto.RenterId) ?? throw new KeyNotFoundException($"Renter with id {dto.RenterId} not found");
         var entity = mapper.Map<Rent>(dto);
         var result = await repository.Create(entity);
         return mapper.Map<RentDto>(result);

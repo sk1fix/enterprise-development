@@ -4,6 +4,7 @@ using BikeRentalPoint.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentalPoint.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(BikeRentalPointDbContext))]
-    partial class BikeRentalPointDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251216171117_AddStaticId")]
+    partial class AddStaticId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

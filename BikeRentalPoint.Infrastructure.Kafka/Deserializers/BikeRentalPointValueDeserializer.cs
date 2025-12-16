@@ -7,7 +7,7 @@ namespace BikeRentalPoint.Infrastructure.Kafka.Deserializers;
 /// <summary>
 /// Custom Kafka deserializer for converting message keys from JSON format to Guid identifiers
 /// </summary>
-public class BookStoreValueDeserializer : IDeserializer<IList<CreateRentDto>>
+public class BikeRentalPointValueDeserializer : IDeserializer<IList<CreateRentDto>>
 {
     /// <summary>
     /// Deserializes a Kafka message key from JSON format to a Guid
