@@ -37,15 +37,19 @@ public class GeneratorController(ILogger<GeneratorController> logger, IProducerS
             var list = new List<CreateRentDto>(payloadLimit);
             var counter = 0;
 
-            var bikeIds = (configuration["BikeIds"] ?? "")
-                .Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(Guid.Parse)
-                .ToArray();
+            var bikeIds = configuration
+                .GetSection("RentGenerator:BikeIds")
+                .Get<Guid[]>() ?? Array.Empty<Guid>();
 
-            var renterIds = (configuration["RenterIds"] ?? "")
-                .Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(Guid.Parse)
-                .ToArray();
+            var renterIds = configuration
+                .GetSection("RentGenerator:RenterIds")
+                .Get<Guid[]>() ?? Array.Empty<Guid>();
+
+            if (bikeIds.Length == 0 || renterIds.Length == 0)
+            {
+                logger.LogError("BikeIds or RenterIds configuration is empty");
+                return StatusCode(500, "Configuration error: BikeIds or RenterIds is empty.");
+            }
 
             while (counter < payloadLimit)
             {
