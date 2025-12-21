@@ -1,4 +1,4 @@
-# 🚴 BikeRentalPoint - Система управления прокатом велосипедов
+# 🚴 BikeRentalPoint - Пункт велопроката
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/)
 [![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-8.0-512BD4?style=flat-square&logo=dotnet)](https://dotnet.microsoft.com/apps/aspnet)
