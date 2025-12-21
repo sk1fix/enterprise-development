@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Domain", "BikeRentalPoint.Domain\BikeRentalPoint.Domain.csproj", "{35C2563A-F562-409C-9621-FC30EF384225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Tests", "BikeRentalPoint.Tests\BikeRentalPoint.Tests.csproj", "{1A8307ED-43CF-4E55-B2D1-1B63538216FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{35C2563A-F562-409C-9621-FC30EF384225} = {35C2563A-F562-409C-9621-FC30EF384225}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Application", "BikeRentalPoint.Application\BikeRentalPoint.Application.csproj", "{542B1DC2-2290-4133-AD01-3361AD4E1871}"
+	ProjectSection(ProjectDependencies) = postProject
+		{35C2563A-F562-409C-9621-FC30EF384225} = {35C2563A-F562-409C-9621-FC30EF384225}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Application.Contracts", "BikeRentalPoint.Application.Contracts\BikeRentalPoint.Application.Contracts.csproj", "{58DDBB1D-43CA-488E-A807-896154872117}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Shared", "BikeRentalPoint.Shared\BikeRentalPoint.Shared.csproj", "{A9B61947-2C86-425F-B858-7E023E6BD94C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Api.Host", "BikeRentalPoint.Api.Host\BikeRentalPoint.Api.Host.csproj", "{147C6ED8-46BB-69BB-347C-CDAE59109C38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A} = {4B9A771C-AA6D-49C7-BDEA-714353E9606A}
+		{542B1DC2-2290-4133-AD01-3361AD4E1871} = {542B1DC2-2290-4133-AD01-3361AD4E1871}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.AppHost", "BikeRentalPoint.AppHost\BikeRentalPoint.AppHost.csproj", "{E6A16BB4-F002-4DD6-B086-5D929D00599C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.ServiceDefaults", "BikeRentalPoint.ServiceDefaults\BikeRentalPoint.ServiceDefaults.csproj", "{B39E2C29-D024-4E91-2BAD-390A527B8218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Infrastructure.EfCore", "BikeRentalPoint.Infrastructure.EfCore\BikeRentalPoint.Infrastructure.EfCore.csproj", "{4B9A771C-AA6D-49C7-BDEA-714353E9606A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Generator.Kafka.Host", "BikeRentalPoint.Generator.Kafka.Host\BikeRentalPoint.Generator.Kafka.Host.csproj", "{A87C976E-CBF1-4B07-8778-071D16B64575}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentalPoint.Infrastructure.Kafka", "BikeRentalPoint.Infrastructure.Kafka\BikeRentalPoint.Infrastructure.Kafka.csproj", "{0C9D84AD-6069-4E75-8D58-38C3F3C1AFE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35C2563A-F562-409C-9621-FC30EF384225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35C2563A-F562-409C-9621-FC30EF384225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35C2563A-F562-409C-9621-FC30EF384225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35C2563A-F562-409C-9621-FC30EF384225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8307ED-43CF-4E55-B2D1-1B63538216FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542B1DC2-2290-4133-AD01-3361AD4E1871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58DDBB1D-43CA-488E-A807-896154872117}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58DDBB1D-43CA-488E-A807-896154872117}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58DDBB1D-43CA-488E-A807-896154872117}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58DDBB1D-43CA-488E-A807-896154872117}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B61947-2C86-425F-B858-7E023E6BD94C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B61947-2C86-425F-B858-7E023E6BD94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B61947-2C86-425F-B858-7E023E6BD94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B61947-2C86-425F-B858-7E023E6BD94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147C6ED8-46BB-69BB-347C-CDAE59109C38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147C6ED8-46BB-69BB-347C-CDAE59109C38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147C6ED8-46BB-69BB-347C-CDAE59109C38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147C6ED8-46BB-69BB-347C-CDAE59109C38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A16BB4-F002-4DD6-B086-5D929D00599C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A16BB4-F002-4DD6-B086-5D929D00599C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A16BB4-F002-4DD6-B086-5D929D00599C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A16BB4-F002-4DD6-B086-5D929D00599C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39E2C29-D024-4E91-2BAD-390A527B8218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9A771C-AA6D-49C7-BDEA-714353E9606A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87C976E-CBF1-4B07-8778-071D16B64575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87C976E-CBF1-4B07-8778-071D16B64575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87C976E-CBF1-4B07-8778-071D16B64575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87C976E-CBF1-4B07-8778-071D16B64575}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C9D84AD-6069-4E75-8D58-38C3F3C1AFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9D84AD-6069-4E75-8D58-38C3F3C1AFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9D84AD-6069-4E75-8D58-38C3F3C1AFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9D84AD-6069-4E75-8D58-38C3F3C1AFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BD8649F-8F5D-44AF-80A3-8D2CADA29EEC}
+	EndGlobalSection
+EndGlobal
